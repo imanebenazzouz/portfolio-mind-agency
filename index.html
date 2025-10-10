@@ -19,6 +19,8 @@
       --gap: clamp(16px, 3vw, 36px);
       --max: 1200px;
       --shadow: 0 15px 35px rgba(0,0,0,.35);
+      --header-h: 64px;
+      --mobile-break: 760px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -50,7 +52,7 @@
       background:linear-gradient(180deg, rgba(10,12,18,.7), rgba(10,12,18,.35) 60%, transparent);
       border-bottom:1px solid var(--stroke);
     }
-    .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:var(--header-h)}
     .brand{display:flex; align-items:center; gap:.7rem; font-weight:700; letter-spacing:.2px}
     .brand__logo{
       width:28px; height:28px; border-radius:8px;
@@ -67,12 +69,50 @@
     .nav a:hover{background:rgba(255,255,255,.06)}
     @keyframes float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
 
+    /* ===== Bouton burger (mobile only) ===== */
+    .menu-toggle{
+      display:none; /* caché par défaut (desktop) */
+      width:42px; height:42px; border-radius:10px; border:1px solid var(--stroke);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      backdrop-filter:saturate(150%) blur(6px);
+      align-items:center; justify-content:center; cursor:pointer;
+    }
+    .menu-toggle .burger,
+    .menu-toggle .burger::before,
+    .menu-toggle .burger::after{
+      content:""; display:block; width:20px; height:2px; background:var(--text); border-radius:2px; position:relative; transition:transform .25s ease, opacity .25s ease;
+    }
+    .menu-toggle .burger::before{ position:absolute; top:-6px }
+    .menu-toggle .burger::after{ position:absolute; top:6px }
+    .menu-toggle[aria-expanded="true"] .burger{ transform:rotate(45deg) }
+    .menu-toggle[aria-expanded="true"] .burger::before{ transform:rotate(90deg); top:0 }
+    .menu-toggle[aria-expanded="true"] .burger::after{ opacity:0 }
+
+    /* ===== Nav mobile (affiché seulement sous 760px) ===== */
+    .mobile-nav{
+      position:fixed; top:var(--header-h); left:0; right:0;
+      background:linear-gradient(180deg, rgba(12,14,20,.96), rgba(12,14,20,.92));
+      border-top:1px solid var(--stroke);
+      border-bottom:1px solid var(--stroke);
+      display:grid; gap:.4rem; padding:10px var(--gap) 14px;
+      transform:translateY(-8px); opacity:0; pointer-events:none;
+      transition: transform .25s ease, opacity .25s ease;
+    }
+    .mobile-nav.open{ transform:none; opacity:1; pointer-events:auto }
+    .mobile-nav a{ padding:.9rem 0; border-radius:10px }
+    .mobile-nav a:hover{ background: rgba(255,255,255,.05) }
+
+    /* ===== Breakpoint : sur mobile on affiche burger + nav mobile, on cache la nav desktop ===== */
+    @media (max-width: 760px){
+      .nav__right{ display:none }
+      .menu-toggle{ display:inline-flex }
+    }
+
     /* ================== Hero ================== */
     .hero{
       position:relative; padding: clamp(72px, 12vw, 160px) 0 clamp(48px, 8vw, 120px);
       overflow:hidden; isolation:isolate;
     }
-    /* blobs décoratifs (on garde l’ambiance sans l’orbite) */
     .hero::before,
     .hero::after{
       content:""; position:absolute; inset:auto -10% -20% -10%; height:55vh; z-index:-1;
@@ -84,7 +124,6 @@
     }
     @keyframes breathe{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(12px)} }
 
-    /* → Passage en une seule colonne + centrage doux */
     .hero__inner{
       display:grid; grid-template-columns: 1fr; justify-items:start; gap: var(--gap);
       max-width: 900px;
@@ -104,8 +143,6 @@
     @keyframes sheen{ 0%{background-position:0% 0} 100%{background-position:200% 0} }
     .hero p{color:var(--muted); font-size: clamp(1rem, 1.2vw, 1.125rem); max-width: 70ch}
     .cta{margin-top:1.3rem; display:flex; gap:.8rem; flex-wrap:wrap}
-
-    /* (supprimé) .hero__card, .orbit, .orbit__ring, .planet */
 
     /* ================== Sections génériques ================== */
     section{ padding: clamp(40px, 8vw, 96px) 0; }
@@ -129,7 +166,6 @@
       opacity:.7; transform: translateY(2px); transition: transform .2s;
     }
     .card:hover{ transform: translateY(-4px); border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.08) }
-    .card:hover::after{ transform:none }
     .ico{
       width:40px; height:40px; border-radius:12px; display:grid; place-items:center; margin-bottom:.6rem;
       background: radial-gradient(120px 60px at 20% 20%, rgba(155,140,255,.45), transparent 60%), #121522; border:1px solid var(--stroke)
@@ -149,11 +185,9 @@
     .preview img{ width:100%; height:100%; object-fit:cover; transform:scale(1.02); transition: transform .8s ease }
     .preview:hover img{ transform:scale(1.06) }
 
-    /* ================== Process mini timeline ================== */
+    /* ================== Process timeline ================== */
     .timeline{ display:grid; gap: 14px; margin-top:.8rem }
-    .step{
-      display:grid; grid-template-columns: 22px 1fr; gap:.8rem; align-items:start;
-    }
+    .step{ display:grid; grid-template-columns: 22px 1fr; gap:.8rem; align-items:start; }
     .dot{
       width:10px; height:10px; border-radius:50%;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
@@ -176,12 +210,17 @@
     .reveal{ opacity:0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease }
     .reveal.in{ opacity:1; transform:none }
 
-    /* ================== Small helpers ================== */
+    /* ================== Helpers ================== */
     .muted{ color:var(--muted) }
     .chips{ display:flex; gap:.5rem; flex-wrap:wrap }
     .chip{
       font-size:.85rem; padding:.35rem .6rem; border-radius:999px; border:1px solid var(--stroke);
       background: rgba(255,255,255,.04)
+    }
+
+    /* motion-safe */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation:none !important; transition:none !important }
     }
   </style>
 </head>
@@ -194,13 +233,28 @@
         <span class="brand__logo" aria-hidden="true"></span>
         <span>Mind Agency</span>
       </div>
-      <nav class="nav__right">
+
+      <!-- Nav desktop -->
+      <nav class="nav__right" aria-label="Navigation principale">
         <a href="#services">Services</a>
         <a href="#portfolio">Réalisations</a>
         <a href="#process">Méthode</a>
         <a class="btn btn--primary" href="#contact">Demander un devis</a>
       </nav>
+
+      <!-- Bouton burger (mobile only) -->
+      <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="burger"></span>
+      </button>
     </div>
+
+    <!-- Panneau mobile -->
+    <nav id="mobileMenu" class="mobile-nav" hidden aria-label="Navigation mobile">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Réalisations</a>
+      <a href="#process">Méthode</a>
+      <a href="#contact" class="btn btn--primary" style="justify-self:start">Demander un devis</a>
+    </nav>
   </header>
 
   <!-- ================== Hero ================== -->
@@ -209,7 +263,7 @@
       <div>
         <span class="eyebrow"><span class="dot"></span> Sites vitrine élégants & rapides</span>
         <h1>Créez une présence en ligne <br>qui transforme les visiteurs en clients.</h1>
-        <p>On conçoit des sites vitrine **modernes, performants et SEO-friendly**. Design soigné, contenu clair et analytics intégrés pour suivre vos résultats.</p>
+        <p>On conçoit des sites vitrine <strong>modernes, performants et SEO-friendly</strong>. Design soigné, contenu clair et analytics intégrés pour suivre vos résultats.</p>
         <div class="cta">
           <a class="btn btn--primary" href="#contact">Obtenir un devis gratuit</a>
           <a class="btn btn--ghost" href="#portfolio">Voir des exemples</a>
@@ -256,7 +310,6 @@
   <section id="portfolio">
     <div class="container work">
       <div class="preview reveal" aria-label="aperçu d'une réalisation">
-        <!-- Remplace les images par tes propres captures -->
         <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1400&auto=format&fit=crop" alt="Projet vitrine élégant — Mind Agency">
       </div>
       <div>
@@ -339,7 +392,7 @@
     </div>
   </footer>
 
-  <!-- ================== Micro JS: reveal + year ================== -->
+  <!-- ================== Micro JS: burger + reveal + year ================== -->
   <script>
     // année dynamique
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -350,8 +403,44 @@
         if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
       })
     }, { threshold: .14 });
-
     document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+    // ===== Menu burger (mobile) =====
+    const btn = document.querySelector('.menu-toggle');
+    const panel = document.getElementById('mobileMenu');
+
+    function closeMenu(){
+      btn.setAttribute('aria-expanded','false');
+      panel.classList.remove('open');
+      panel.hidden = true;
+      document.removeEventListener('click', onOutside);
+      document.removeEventListener('keydown', onEsc);
+    }
+    function onOutside(e){
+      if(!panel.contains(e.target) && !btn.contains(e.target)) closeMenu();
+    }
+    function onEsc(e){
+      if(e.key === 'Escape') closeMenu();
+    }
+
+    btn.addEventListener('click', ()=>{
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      if(expanded){ closeMenu(); }
+      else{
+        btn.setAttribute('aria-expanded','true');
+        panel.hidden = false;
+        requestAnimationFrame(()=> panel.classList.add('open'));
+        document.addEventListener('click', onOutside);
+        document.addEventListener('keydown', onEsc);
+      }
+    });
+
+    // fermer en cliquant un lien
+    panel.querySelectorAll('a').forEach(a=> a.addEventListener('click', closeMenu));
+
+    // sécurité: si on re-stretch la fenêtre vers desktop, on ferme le menu
+    const mq = window.matchMedia(`(min-width: ${getComputedStyle(document.documentElement).getPropertyValue('--mobile-break').trim()})`);
+    mq.addEventListener?.('change', e => { if(e.matches) closeMenu(); });
   </script>
 </body>
 </html>
