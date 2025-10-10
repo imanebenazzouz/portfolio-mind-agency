@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Mind Agency — Sites vitrine modernes & performants</title>
+  <meta name="description" content="Mind Agency crée des sites vitrine élégants, rapides et orientés conversion. Devis gratuit.">
+  <style>
+    /* ================== Variables & Reset ================== */
+    :root{
+      --bg: #0b0d12;
+      --card: rgba(255,255,255,0.06);
+      --stroke: rgba(255,255,255,0.08);
+      --text: #e9edf3;
+      --muted: #aab3c2;
+      --accent: #9b8cff; /* violet soft */
+      --accent2: #4de4c1; /* mint */
+      --radius: 16px;
+      --gap: clamp(16px, 3vw, 36px);
+      --max: 1200px;
+      --shadow: 0 15px 35px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Inter, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text); background: var(--bg); overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:var(--max); margin-inline:auto; padding:0 var(--gap)}
+    .btn{
+      display:inline-flex; align-items:center; gap:.6rem; padding:.9rem 1.2rem; border-radius:12px; border:1px solid var(--stroke);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      backdrop-filter:saturate(150%) blur(6px);
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+      will-change: transform;
+    }
+    .btn:hover{ transform:translateY(-2px); border-color: rgba(255,255,255,.18); box-shadow: 0 8px 24px rgba(75, 96, 255, .15) }
+    .btn--primary{
+      position:relative; overflow:hidden; border:1px solid transparent;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color:#0b0d12; font-weight:600;
+    }
+    .btn--ghost{ color:var(--text) }
+
+    /* ================== Header ================== */
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter: blur(10px) saturate(120%);
+      background:linear-gradient(180deg, rgba(10,12,18,.7), rgba(10,12,18,.35) 60%, transparent);
+      border-bottom:1px solid var(--stroke);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .brand{display:flex; align-items:center; gap:.7rem; font-weight:700; letter-spacing:.2px}
+    .brand__logo{
+      width:28px; height:28px; border-radius:8px;
+      background:
+        radial-gradient(120px 60px at 20% 20%, rgba(155,140,255,.45), transparent 60%),
+        radial-gradient(100px 60px at 80% 60%, rgba(77,228,193,.45), transparent 60%),
+        #111420;
+      border:1px solid var(--stroke);
+      box-shadow: inset 0 0 20px rgba(155,140,255,.25);
+      animation: float 6s ease-in-out infinite;
+    }
+    .nav__right{display:flex; align-items:center; gap:.6rem}
+    .nav a{padding:.6rem .8rem; border-radius:10px; transition: background .2s}
+    .nav a:hover{background:rgba(255,255,255,.06)}
+    @keyframes float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+
+    /* ================== Hero ================== */
+    .hero{
+      position:relative; padding: clamp(72px, 12vw, 160px) 0 clamp(48px, 8vw, 120px);
+      overflow:hidden; isolation:isolate;
+    }
+    /* blobs décoratifs (on garde l’ambiance sans l’orbite) */
+    .hero::before,
+    .hero::after{
+      content:""; position:absolute; inset:auto -10% -20% -10%; height:55vh; z-index:-1;
+      background:
+        radial-gradient(600px 300px at 10% 20%, rgba(155,140,255,.28), transparent 60%),
+        radial-gradient(500px 260px at 90% 40%, rgba(77,228,193,.24), transparent 60%);
+      filter: blur(40px); opacity:.9; pointer-events:none;
+      animation: breathe 14s ease-in-out infinite;
+    }
+    @keyframes breathe{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(12px)} }
+
+    /* → Passage en une seule colonne + centrage doux */
+    .hero__inner{
+      display:grid; grid-template-columns: 1fr; justify-items:start; gap: var(--gap);
+      max-width: 900px;
+    }
+    .hero .container{ display:grid; justify-items:start; }
+
+    .eyebrow{display:inline-flex; align-items:center; gap:.5rem; padding:.35rem .55rem; border-radius:999px; font-size:.85rem;
+      color:#cfd6e4; border:1px solid var(--stroke); background:rgba(255,255,255,.04)}
+    .eyebrow .dot{width:.45rem; height:.45rem; border-radius:50%; background:linear-gradient(90deg,var(--accent),var(--accent2))}
+    .hero h1{
+      margin:.6rem 0 1rem; line-height:1.05; font-size: clamp(2rem, 5vw, 4rem); letter-spacing:-.02em;
+      background: linear-gradient(90deg, #fff, #cfd3ff 30%, #d6fff2 70%, #ffffff);
+      -webkit-background-clip: text; background-clip:text; color:transparent;
+      animation: sheen 6s linear infinite;
+      background-size: 200% 100%;
+    }
+    @keyframes sheen{ 0%{background-position:0% 0} 100%{background-position:200% 0} }
+    .hero p{color:var(--muted); font-size: clamp(1rem, 1.2vw, 1.125rem); max-width: 70ch}
+    .cta{margin-top:1.3rem; display:flex; gap:.8rem; flex-wrap:wrap}
+
+    /* (supprimé) .hero__card, .orbit, .orbit__ring, .planet */
+
+    /* ================== Sections génériques ================== */
+    section{ padding: clamp(40px, 8vw, 96px) 0; }
+    .sec-h{ font-size: clamp(1.4rem, 2.6vw, 2.2rem); margin:0 0 .6rem; letter-spacing:-.02em }
+    .sec-p{ color:var(--muted); margin:0 0 1.2rem }
+
+    /* ================== Services ================== */
+    .grid{ display:grid; gap: var(--gap) }
+    .grid--3{ grid-template-columns: repeat(3, 1fr) }
+    @media (max-width:980px){ .grid--3{ grid-template-columns: 1fr 1fr } }
+    @media (max-width:640px){ .grid--3{ grid-template-columns: 1fr } }
+
+    .card{
+      border:1px solid var(--stroke); border-radius: var(--radius);
+      background: var(--card); padding: 1.2rem; transition: transform .2s ease, border-color .2s ease, background .2s;
+      position:relative; overflow:hidden;
+    }
+    .card::after{
+      content:""; position:absolute; inset:auto 0 0 0; height:2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity:.7; transform: translateY(2px); transition: transform .2s;
+    }
+    .card:hover{ transform: translateY(-4px); border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.08) }
+    .card:hover::after{ transform:none }
+    .ico{
+      width:40px; height:40px; border-radius:12px; display:grid; place-items:center; margin-bottom:.6rem;
+      background: radial-gradient(120px 60px at 20% 20%, rgba(155,140,255,.45), transparent 60%), #121522; border:1px solid var(--stroke)
+    }
+    .card h3{ margin:.2rem 0 .4rem; font-size:1.15rem }
+    .card p{ color:var(--muted); margin:0 }
+
+    /* ================== Portfolio teaser ================== */
+    .work{
+      display:grid; grid-template-columns: 1.2fr .8fr; gap: var(--gap); align-items:center
+    }
+    @media (max-width:980px){ .work{ grid-template-columns: 1fr } }
+    .work .preview{
+      position:relative; border-radius: var(--radius); overflow:hidden; border:1px solid var(--stroke);
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    }
+    .preview img{ width:100%; height:100%; object-fit:cover; transform:scale(1.02); transition: transform .8s ease }
+    .preview:hover img{ transform:scale(1.06) }
+
+    /* ================== Process mini timeline ================== */
+    .timeline{ display:grid; gap: 14px; margin-top:.8rem }
+    .step{
+      display:grid; grid-template-columns: 22px 1fr; gap:.8rem; align-items:start;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      margin-top:.35rem; box-shadow:0 0 0 4px rgba(155,140,255,.15);
+    }
+    .step p{ margin:.1rem 0; color:var(--muted) }
+
+    /* ================== CTA bandeau ================== */
+    .cta-band{
+      border:1px solid var(--stroke); border-radius: calc(var(--radius) + 4px);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      padding: clamp(16px, 3vw, 26px);
+      display:flex; align-items:center; justify-content:space-between; gap: var(--gap); flex-wrap:wrap
+    }
+
+    /* ================== Footer ================== */
+    footer{ padding:28px 0; color:#90a0b8; border-top:1px solid var(--stroke) }
+
+    /* ================== Reveal on scroll ================== */
+    .reveal{ opacity:0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease }
+    .reveal.in{ opacity:1; transform:none }
+
+    /* ================== Small helpers ================== */
+    .muted{ color:var(--muted) }
+    .chips{ display:flex; gap:.5rem; flex-wrap:wrap }
+    .chip{
+      font-size:.85rem; padding:.35rem .6rem; border-radius:999px; border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04)
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================== Header ================== -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span class="brand__logo" aria-hidden="true"></span>
+        <span>Mind Agency</span>
+      </div>
+      <nav class="nav__right">
+        <a href="#services">Services</a>
+        <a href="#portfolio">Réalisations</a>
+        <a href="#process">Méthode</a>
+        <a class="btn btn--primary" href="#contact">Demander un devis</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================== Hero ================== -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> Sites vitrine élégants & rapides</span>
+        <h1>Créez une présence en ligne <br>qui transforme les visiteurs en clients.</h1>
+        <p>On conçoit des sites vitrine **modernes, performants et SEO-friendly**. Design soigné, contenu clair et analytics intégrés pour suivre vos résultats.</p>
+        <div class="cta">
+          <a class="btn btn--primary" href="#contact">Obtenir un devis gratuit</a>
+          <a class="btn btn--ghost" href="#portfolio">Voir des exemples</a>
+        </div>
+        <div class="chips" style="margin-top:1rem">
+          <span class="chip">Design sur-mesure</span>
+          <span class="chip">Chargement rapide</span>
+          <span class="chip">SEO prêt</span>
+          <span class="chip">Maintenance simple</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== Services ================== -->
+  <section id="services">
+    <div class="container">
+      <h2 class="sec-h">Ce qu’on fait le mieux</h2>
+      <p class="sec-p">Des sites vitrine sobres, efficaces et pensés pour convertir.</p>
+
+      <div class="grid grid--3">
+        <article class="card reveal">
+          <div class="ico">💎</div>
+          <h3>Design & Identité</h3>
+          <p>Charte couleur, typographies, maquettes responsive. On crée une image de marque claire et mémorable.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="ico">⚡</div>
+          <h3>Développement rapide</h3>
+          <p>Stack moderne, pages ultra-rapides, bonnes pratiques d’accessibilité et performances web.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="ico">📈</div>
+          <h3>SEO & Analytics</h3>
+          <p>Structure sémantique, métadonnées, sitemap, suivi des conversions pour comprendre vos résultats.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== Portfolio teaser ================== -->
+  <section id="portfolio">
+    <div class="container work">
+      <div class="preview reveal" aria-label="aperçu d'une réalisation">
+        <!-- Remplace les images par tes propres captures -->
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1400&auto=format&fit=crop" alt="Projet vitrine élégant — Mind Agency">
+      </div>
+      <div>
+        <h2 class="sec-h">Quelques réalisations récentes</h2>
+        <p class="sec-p">Restaurants, coachs, cabinets, artistes, associations… On adapte le style à votre audience.</p>
+        <div class="grid">
+          <div class="card reveal">
+            <h3>Maison Bianca — Vitrine luxe</h3>
+            <p class="muted">Design minimaliste, texture haut de gamme, prise de contact optimisée.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Kmi Fit — Coach sportif</h3>
+            <p class="muted">Couleurs dynamiques, témoignages, pack d’offres clair, formulaire rapide.</p>
+          </div>
+        </div>
+        <div class="cta" style="margin-top:1rem">
+          <a class="btn btn--ghost" href="#contact">Parler de votre projet</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== Process ================== -->
+  <section id="process">
+    <div class="container">
+      <h2 class="sec-h">Notre méthode simple</h2>
+      <p class="sec-p">Transparente, rapide, avec validations à chaque étape.</p>
+      <div class="timeline">
+        <div class="step reveal">
+          <span class="dot" aria-hidden="true"></span>
+          <div>
+            <strong>1. Brief & positionnement</strong>
+            <p>On clarifie vos objectifs, votre audience et votre message clé.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <span class="dot" aria-hidden="true"></span>
+          <div>
+            <strong>2. Maquettes</strong>
+            <p>Page d’accueil + styleguide. Ajustements rapides sur la base de vos retours.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <span class="dot" aria-hidden="true"></span>
+          <div>
+            <strong>3. Développement</strong>
+            <p>Intégration responsive, SEO on-page, optimisation vitesse & accessibilité.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <span class="dot" aria-hidden="true"></span>
+          <div>
+            <strong>4. Mise en ligne & suivi</strong>
+            <p>Connexion nom de domaine, analytics, et handover pour être autonome.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== CTA / Contact ================== -->
+  <section id="contact">
+    <div class="container cta-band reveal">
+      <div>
+        <h3 style="margin:.2rem 0 .4rem">Parlez-nous de votre site vitrine</h3>
+        <p class="muted" style="margin:0">Devis gratuit sous 24h. On vous propose une direction créative et un planning clair.</p>
+      </div>
+      <div class="cta">
+        <a class="btn btn--primary" href="mailto:contact@mind-agency.fr?subject=Devis%20site%20vitrine">contact@mind-agency.fr</a>
+        <a class="btn btn--ghost" href="https://wa.me/33667650312" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== Footer ================== -->
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:var(--gap); flex-wrap:wrap">
+      <span>© <span id="year"></span> Mind Agency</span>
+      <span class="muted">Sites vitrine élégants & performants</span>
+    </div>
+  </footer>
+
+  <!-- ================== Micro JS: reveal + year ================== -->
+  <script>
+    // année dynamique
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // reveal au scroll (léger et sans lib)
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      })
+    }, { threshold: .14 });
+
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+  </script>
+</body>
+</html>
