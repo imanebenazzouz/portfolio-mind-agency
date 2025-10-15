@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Services — Mind Agency</title>
+  <meta name="description" content="Nos services : design, développement, SEO & analytics.">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="services">
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span class="brand__logo" aria-hidden="true"></span>
+        <a href="../index.html" class="brand__name">Mind Agency</a>
+      </div>
+      <nav class="nav__right" aria-label="Navigation principale">
+        <a href="services.html" class="active">Services</a>
+        <a href="portfolio.html">Réalisations</a>
+        <a href="methode.html">Méthode</a>
+        <a class="btn btn--primary" href="contact.html">Demander un devis</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu"><span class="burger"></span></button>
+    </div>
+    <nav id="mobileMenu" class="mobile-nav" hidden aria-label="Navigation mobile">
+      <a href="services.html" class="active">Services</a>
+      <a href="portfolio.html">Réalisations</a>
+      <a href="methode.html">Méthode</a>
+      <a href="contact.html" class="btn btn--primary" style="justify-self:start">Demander un devis</a>
+    </nav>
+  </header>
+
+  <section class="hero hero--compact">
+    <div class="container hero__inner">
+      <h1>Services</h1>
+      <p>Des offres claires, des résultats mesurables.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container grid grid--3">
+      <article class="card reveal"><div class="ico">🎨</div><h3>Branding & UI</h3><p>Palette, typo, composants UI, maquettes Figma.</p></article>
+      <article class="card reveal"><div class="ico">🧱</div><h3>Intégration</h3><p>HTML/CSS/JS propres, responsive et accessibles.</p></article>
+      <article class="card reveal"><div class="ico">🚀</div><h3>Performance</h3><p>Optimisation images, lazy-loading, Core Web Vitals.</p></article>
+      <article class="card reveal"><div class="ico">🔍</div><h3>SEO on-page</h3><p>Structure sémantique, métadonnées, sitemap/robots.</p></article>
+      <article class="card reveal"><div class="ico">📊</div><h3>Analytics</h3><p>Taggage conversions, dashboards, A/B testing.</p></article>
+      <article class="card reveal"><div class="ico">🛠️</div><h3>Maintenance</h3><p>Mises à jour, sauvegardes, petites évolutions.</p></article>
+    </div>
+  </section>
+
+  <section>
+    <div class="container cta-band reveal">
+      <div><h3 style="margin:.2rem 0 .4rem">Un besoin spécifique ?</h3><p class="muted" style="margin:0">On adapte l’offre à ton budget et à tes délais.</p></div>
+      <div class="cta"><a class="btn btn--primary" href="contact.html">Demander un devis</a></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© <span id="year"></span> Mind Agency</span>
+      <span class="muted">Besoin d’un site vitrine ? <a class="link" href="contact.html">Contactez-nous</a></span>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>
