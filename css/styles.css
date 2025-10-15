@@ -160,3 +160,26 @@ footer{padding:28px 0;color:#90a0b8;border-top:1px solid var(--stroke)}
 
 /* Motion reduce */
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+
+/* ===== Accueil boost ===== */
+.lead{font-size:clamp(1.05rem,1.3vw,1.25rem); color:var(--muted); max-width:70ch}
+.checklist{margin:1rem 0 0; padding:0; list-style:none; display:grid; gap:.35rem}
+.checklist li{display:flex; align-items:center; gap:.5rem}
+.checklist li::before{content:"✓"; display:inline-grid; place-items:center; width:1.2rem; height:1.2rem; border-radius:4px; border:1px solid var(--stroke); font-weight:700}
+
+/* Trust bar (logos / tags) */
+.trustbar{padding:22px 0; border-top:1px solid var(--stroke); border-bottom:1px solid var(--stroke); background:rgba(255,255,255,.02)}
+.trustbar__row{display:flex; align-items:center; gap:1rem; flex-wrap:wrap; justify-content:space-between}
+.trustbar__title{color:#a8b2c4; font-size:.95rem}
+.trustbar__logos{display:flex; gap:.5rem; flex-wrap:wrap; margin:0; padding:0; list-style:none}
+.logo-badge{border:1px solid var(--stroke); background:var(--card); padding:.5rem .7rem; border-radius:10px; font-size:.9rem; color:#cfd6e4}
+
+/* Testimonials */
+.testimonial p{margin:.4rem 0 .6rem}
+.stars{letter-spacing:.15rem; font-weight:700; opacity:.9}
+.testimonial__author{font-size:.9rem; color:#aab3c2}
+
+/* FAQ */
+.faq details summary{cursor:pointer; font-weight:600; outline:none}
+.faq details[open] summary{margin-bottom:.4rem}
