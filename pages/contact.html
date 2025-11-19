@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Contact — Mind Agency</title>
+  <meta name="description" content="Contactez Mind Agency : devis gratuit sous 24h.">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="contact">
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span class="brand__logo" aria-hidden="true"></span>
+        <a href="../index.html" class="brand__name">Mind Agency</a>
+      </div>
+      <nav class="nav__right" aria-label="Navigation principale">
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Réalisations</a>
+        <a href="methode.html">Méthode</a>
+        <a href="formules.html">Formules</a>
+        <a href="avis.html">Nos avis</a>
+        <a href="faq.html">FAQ</a>
+        <a class="btn btn--primary active" href="contact.html">Demander un devis</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu"><span class="burger"></span></button>
+    </div>
+    <nav id="mobileMenu" class="mobile-nav" hidden aria-label="Navigation mobile">
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Réalisations</a>
+      <a href="methode.html">Méthode</a>
+      <a href="formules.html">Formules</a>
+      <a href="avis.html">Nos avis</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html" class="btn btn--primary active" style="justify-self:start">Demander un devis</a>
+    </nav>
+  </header>
+
+  <section class="hero hero--compact">
+    <div class="container hero__inner">
+      <h1>Contact</h1>
+      <p>Devis gratuit sous 24h. Dites-nous en 2 minutes votre besoin.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="card" style="padding:1.6rem">
+        <form id="contactForm" class="grid" style="gap:1rem" novalidate>
+          <div class="grid" style="grid-template-columns:1fr 1fr; gap:var(--gap)">
+            <label class="form-field">Nom<br><input required type="text" name="name" placeholder="Votre nom"></label>
+            <label class="form-field">Email<br><input required type="email" name="email" placeholder="vous@exemple.fr"></label>
+          </div>
+          <label class="form-field">Sujet<br><input required type="text" name="subject" placeholder="Création d’un site vitrine"></label>
+          <label class="form-field">Message<br><textarea required name="message" rows="6" placeholder="Parlez-nous de votre activité et des objectifs du site."></textarea></label>
+          <p class="form-status" role="status" aria-live="polite"></p>
+          <div class="cta">
+            <button class="btn btn--primary" type="submit">Envoyer</button>
+            <a class="btn btn--ghost" href="https://wa.me/33667650312" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© <span id="year"></span> Mind Agency</span>
+      <span class="muted">Nous répondons vite ✦</span>
+    </div>
+  </footer>
+
+  <script id="contact-config" type="application/json">
+    {
+      "endpoint": "http://localhost:3000/api/contact",
+      "senderEmail": "velibapp5@gmail.com",
+      "senderName": "Mind Agency",
+      "to": "imvnebnz@gmail.com",
+      "disableMailtoFallback": true,
+      "debug": true
+    }
+  </script>
+  <script src="../js/app.js"></script>
+  <script src="../js/contact.js"></script>
+</body>
+</html>

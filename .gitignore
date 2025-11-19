@@ -1,0 +1,12 @@
+node_modules
+.vercel
+.netlify
+.DS_Store
+.env
+.env.*
+# Env files
+.env
+.env.*
+*.env
+.env.local
+.env.*.local

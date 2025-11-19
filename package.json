@@ -1,0 +1,10 @@
+{
+  "name": "portfolio-mind-agency",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "dev:api": "node dev-server.js"
+  }
+}
