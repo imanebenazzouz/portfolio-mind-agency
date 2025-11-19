@@ -272,3 +272,16 @@ footer{padding:28px 0;color:#90a0b8;border-top:1px solid var(--stroke)}
 /* FAQ */
 .faq details summary{cursor:pointer; font-weight:600; outline:none}
 .faq details[open] summary{margin-bottom:.4rem}
+
+/* ================== Cookie banner ================== */
+.cookie-banner{
+  position:fixed; inset:auto 12px 12px 12px; z-index:1100;
+  display:flex; align-items:flex-start; gap:.8rem; flex-wrap:wrap;
+  border:1px solid var(--stroke); border-radius:14px;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));
+  box-shadow:0 12px 36px rgba(0,0,0,.35);
+  padding:.9rem 1rem;
+}
+.cookie-banner p{margin:.1rem 0; color:var(--muted); max-width:70ch; font-size:.95rem}
+.cookie-actions{display:flex; gap:.5rem; margin-left:auto}
+.cookie-actions .btn{padding:.6rem .9rem}

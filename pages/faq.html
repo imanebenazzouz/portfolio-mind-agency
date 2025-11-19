@@ -48,7 +48,7 @@
       <div class="faq">
         <details class="card reveal" open>
           <summary>En combien de temps livrez-vous ?</summary>
-          <p>Entre 2 et 4 semaines selon le nombre de pages, les fonctionnalités (formulaires, bases de données) et la réactivité sur les retours.</p>
+          <p>Entre 2 et 4 semaines selon le nombre de pages, les fonctionnalités (formulaires, bases de données) et la réactivité sur les retours. <a class="link" href="formules.html">Voir nos formules</a>.</p>
         </details>
         <details class="card reveal">
           <summary>Le site est-il optimisé pour le SEO ?</summary>
@@ -64,7 +64,7 @@
         </details>
         <details class="card reveal">
           <summary>Proposez-vous de la maintenance ?</summary>
-          <p>Nous pouvons rester en accompagnement continu : mises à jour, monitoring, optimisations SEO/perfs, et petits ajouts fonctionnels.</p>
+          <p>Nous pouvons rester en accompagnement continu : mises à jour, monitoring, optimisations SEO/perfs, et petits ajouts fonctionnels. <a class="link" href="formules.html">Voir la maintenance incluse</a>.</p>
         </details>
       </div>
     </div>
@@ -85,10 +85,58 @@
   <footer>
     <div class="container footer-row">
       <span>© <span id="year"></span> Mind Agency</span>
-      <span class="muted">FAQ mise à jour régulièrement</span>
+      <span class="muted">FAQ mise à jour régulièrement — <a class="link" href="mentions-legales.html">Mentions légales</a> · <a class="link" href="confidentialite.html">Confidentialité</a></span>
     </div>
   </footer>
 
   <script src="../js/app.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "En combien de temps livrez-vous ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Entre 2 et 4 semaines selon le nombre de pages, les fonctionnalités (formulaires, bases de données) et la réactivité sur les retours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Le site est-il optimisé pour le SEO ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui : structure sémantique propre, balises title/meta, maillage interne et sitemap soumis. Nous pouvons aussi gérer les contenus si besoin."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Pourrai-je modifier le contenu moi-même ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nous livrons un mini guide vidéo + documentation, et nous pouvons brancher un CMS headless ou Webflow selon le besoin."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Gérez-vous les bases de données et automatisations ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui : modélisation SQL/NoSQL, APIs sécurisées, formulaires dynamiques, intégrations Zapier/Make, CRM et envoi d’emails."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Proposez-vous de la maintenance ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nous pouvons rester en accompagnement continu : mises à jour, monitoring, optimisations SEO/perfs, et petits ajouts fonctionnels."
+        }
+      }
+    ]
+  }
+  </script>
 </body>
 </html>

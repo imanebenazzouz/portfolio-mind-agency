@@ -4,6 +4,31 @@
   if (y) y.textContent = new Date().getFullYear();
 })();
 
+// ----- Cookie banner (consentement) -----
+(function cookieBanner(){
+  try{
+    var key = 'cookieConsent.v1';
+    if (localStorage.getItem(key)) return;
+    // Ne pas afficher sur très petits écrans si le clavier est ouvert (heuristique)
+    var banner = document.createElement('div');
+    banner.className = 'cookie-banner';
+    var isInPages = /\/pages\//.test(window.location.pathname);
+    var policyHref = isInPages ? 'confidentialite.html' : 'pages/confidentialite.html';
+    banner.innerHTML = '' +
+      '<p>Nous utilisons des cookies strictement nécessaires au fonctionnement du site (préférences, sécurité). ' +
+      'Aucun cookie publicitaire n’est utilisé. <a class="link" href="' + policyHref + '" target="_blank" rel="noopener">En savoir plus</a>.</p>' +
+      '<div class="cookie-actions">' +
+      '  <button class="btn btn--primary" type="button">OK, compris</button>' +
+      '</div>';
+    document.body.appendChild(banner);
+    var btn = banner.querySelector('button');
+    btn.addEventListener('click', function(){
+      try{ localStorage.setItem(key, String(Date.now())); }catch(e){}
+      banner.remove();
+    });
+  }catch(e){}
+})();
+
 // ----- Reveal on scroll -----
 (function revealOnScroll(){
   var els = document.querySelectorAll('.reveal');
