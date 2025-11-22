@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Nos formules — Mind Agency</title>
-  <meta name="description" content="Trois formules claires pour votre site vitrine : Essentiel, Pro, Sur-mesure. Options à la carte.">
+  <meta name="description" content="Sites vitrine (2 pages, 8 pages ou sur-mesure) et offres full stack sur devis. Options à la carte.">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body data-page="formules">
@@ -48,19 +48,21 @@
   <!-- PRICING remonté visuellement -->
   <section class="pricing-wrap">
     <div class="container">
+      <h2 class="sec-h">Sites vitrine</h2>
+      <p class="sec-p">Trois formats pour aller du minimum viable au sur-mesure.</p>
       <div class="pricing">
-        <!-- Essentiel -->
+        <!-- Vitrine 2 pages -->
         <article class="plan card reveal">
           <div class="plan__head">
-            <h3>Essentiel</h3>
-            <p class="muted">Démarrer vite avec une présence pro.</p>
+            <h3>Vitrine 2 pages</h3>
+            <p class="muted">Landing + page clé pour démarrer vite.</p>
           </div>
           <div class="price">
             <span class="price__value">990€</span>
             <span class="price__note muted">~2 semaines</span>
           </div>
           <ul class="features">
-            <li>Jusqu’à <strong>3 pages</strong> (Accueil, Services, Contact)</li>
+            <li>Jusqu’à <strong>2 pages</strong> (Accueil + page offre)</li>
             <li>Design responsive</li>
             <li>SEO-ready (titres, métas, sitemap)</li>
             <li>Formulaire + WhatsApp</li>
@@ -70,12 +72,12 @@
           <div class="cta"><a class="btn btn--ghost" href="contact.html">Parler de votre projet</a></div>
         </article>
 
-        <!-- Pro -->
+        <!-- Vitrine 8 pages -->
         <article class="plan plan--popular card reveal">
           <div class="plan__badge">Le plus choisi</div>
           <div class="plan__head">
-            <h3>Pro</h3>
-            <p class="muted">Autorité, conversion, options.</p>
+            <h3>Vitrine 8 pages</h3>
+            <p class="muted">Autorité, conversion et profondeur éditoriale.</p>
           </div>
           <div class="price">
             <span class="price__value">1 990€</span>
@@ -93,15 +95,15 @@
           <div class="cta"><a class="btn btn--primary" href="contact.html">Demander un devis précis</a></div>
         </article>
 
-        <!-- Sur-mesure -->
+        <!-- Vitrine sur-mesure -->
         <article class="plan card reveal">
           <div class="plan__head">
-            <h3>Sur-mesure</h3>
-            <p class="muted">Fonctionnalités spécifiques & intégrations.</p>
+            <h3>Vitrine sur-mesure</h3>
+            <p class="muted">Architecture, UX et animations spécifiques.</p>
           </div>
           <div class="price">
             <span class="price__value">Sur devis</span>
-            <span class="price__note muted">planning défini ensemble</span>
+            <span class="price__note muted">Planning défini ensemble</span>
           </div>
           <ul class="features">
             <li>Arborescence illimitée</li>
@@ -112,6 +114,34 @@
             <li>Accompagnement lancement</li>
           </ul>
           <div class="cta"><a class="btn btn--ghost" href="contact.html">Décrire votre besoin</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-wrap" style="padding-top:0">
+    <div class="container">
+      <h2 class="sec-h">Full stack</h2>
+      <p class="sec-p">Apps web, bases de données, automatisations et intégrations métier.</p>
+      <div class="pricing">
+        <article class="plan card reveal">
+          <div class="plan__head">
+            <h3>Full stack</h3>
+            <p class="muted">Front + back + workflow sur mesure.</p>
+          </div>
+          <div class="price">
+            <span class="price__value">Sur devis</span>
+            <span class="price__note muted">Cadrage produit avant chiffrage</span>
+          </div>
+          <ul class="features">
+            <li>Design system + UI réactive</li>
+            <li>Bases de données SQL/NoSQL</li>
+            <li>APIs sécurisées, authentification</li>
+            <li>Automatisations (CRM, emails, ops)</li>
+            <li>Monitoring, observabilité, perfs</li>
+            <li>Accompagnement lancement</li>
+          </ul>
+          <div class="cta"><a class="btn btn--primary" href="contact.html">Planifier un cadrage</a></div>
         </article>
       </div>
     </div>
@@ -159,9 +189,37 @@
   <!-- SURCHARGES SPÉCIFIQUES À LA PAGE -->
   <style>
     /* tout est scope sur la page Formules */
+    body[data-page="formules"] .hero.hero--compact{
+      position:relative;
+      overflow:hidden;
+    }
+    body[data-page="formules"] .hero.hero--compact::before,
+    body[data-page="formules"] .hero.hero--compact::after{
+      content:"";
+      position:absolute;
+      inset:auto -20% -40% -20%;
+      height:85%;
+      background:
+        radial-gradient(420px 220px at 10% 20%,rgba(155,140,255,.6),transparent 70%),
+        radial-gradient(420px 220px at 90% 70%,rgba(77,228,193,.45),transparent 65%);
+      filter:blur(35px);
+      opacity:.85;
+      animation: formulesGlow 16s ease-in-out infinite;
+      z-index:-1;
+    }
+    body[data-page="formules"] .hero.hero--compact::after{
+      inset:auto -30% -60% -30%;
+      background:
+        radial-gradient(520px 260px at 80% 40%,rgba(77,228,193,.4),transparent 70%),
+        radial-gradient(320px 200px at 20% 70%,rgba(155,140,255,.45),transparent 75%);
+      animation-duration:20s;
+      animation-direction:reverse;
+    }
     body[data-page="formules"] .hero.hero--compact .hero__inner{
       padding-top: clamp(24px, 5vh, 48px);
       padding-bottom: clamp(12px, 3vh, 24px);
+      position:relative;
+      z-index:1;
     }
     body[data-page="formules"] .kicker{
       font-size:.9rem; letter-spacing:.12em; text-transform:uppercase;
@@ -192,11 +250,34 @@
       padding:24px;
       transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
       display:flex; flex-direction:column; gap:14px;
+      overflow:hidden;
+      animation: planRise .85s cubic-bezier(.22,.68,0,1) both;
     }
+    body[data-page="formules"] .plan.card:nth-of-type(1){animation-delay:.05s}
+    body[data-page="formules"] .plan.card:nth-of-type(2){animation-delay:.15s}
+    body[data-page="formules"] .plan.card:nth-of-type(3){animation-delay:.25s}
     body[data-page="formules"] .plan.card:hover{
       transform: translateY(-4px);
       box-shadow: 0 16px 36px rgba(0,0,0,.22);
       border-color: rgba(255,255,255,.14);
+    }
+    body[data-page="formules"] .plan.card::after{
+      content:"";
+      position:absolute;
+      inset:-40% auto auto -60%;
+      width:120%;
+      height:140%;
+      background:linear-gradient(120deg,rgba(255,255,255,.25),rgba(77,228,193,.15),rgba(155,140,255,.25));
+      opacity:0;
+      transform:rotate(18deg) translate3d(-60%,0,0);
+      transition:opacity .55s ease, transform .55s ease;
+      filter:blur(6px);
+      mix-blend-mode:screen;
+      pointer-events:none;
+    }
+    body[data-page="formules"] .plan.card:hover::after{
+      opacity:.65;
+      transform:rotate(18deg) translate3d(28%,0,0);
     }
 
     /* badge populaire */
@@ -224,6 +305,7 @@
     body[data-page="formules"] .price__value{
       font-size: clamp(1.6rem, 2.4vw, 2rem);
       font-weight: 800; letter-spacing:.01em;
+      animation: priceGlow 6s ease-in-out infinite alternate;
     }
     body[data-page="formules"] .price__note{ font-size:.95rem; }
 
@@ -243,6 +325,7 @@
       border-radius:6px; font-size:.85rem;
       background: rgba(77,228,193,.16);
       border:1px solid rgba(77,228,193,.45);
+      animation: checkPulse 3.5s ease-in-out infinite;
     }
 
     /* CTA dans la carte */
@@ -255,7 +338,14 @@
     body[data-page="formules"] .grid.grid--3 .card{
       border-radius:14px; border:1px solid rgba(255,255,255,.08);
       transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      animation: optionFloat .9s cubic-bezier(.25,.8,.25,1) both;
     }
+    body[data-page="formules"] .grid.grid--3 .card:nth-child(1){animation-delay:.15s}
+    body[data-page="formules"] .grid.grid--3 .card:nth-child(2){animation-delay:.25s}
+    body[data-page="formules"] .grid.grid--3 .card:nth-child(3){animation-delay:.35s}
+    body[data-page="formules"] .grid.grid--3 .card:nth-child(4){animation-delay:.45s}
+    body[data-page="formules"] .grid.grid--3 .card:nth-child(5){animation-delay:.55s}
+    body[data-page="formules"] .grid.grid--3 .card:nth-child(6){animation-delay:.65s}
     body[data-page="formules"] .grid.grid--3 .card:hover{
       transform: translateY(-3px);
       box-shadow: 0 12px 26px rgba(0,0,0,.18);
@@ -269,7 +359,21 @@
       border:1px solid rgba(255,255,255,.12);
       padding: clamp(14px, 2.4vw, 22px);
       gap: clamp(12px,2vw,20px);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      background: linear-gradient(120deg, rgba(155,140,255,.18), rgba(77,228,193,.1), rgba(255,255,255,.04));
+      background-size:200% 200%;
+      position:relative;
+      overflow:hidden;
+      animation: gradientDrift 14s ease-in-out infinite;
+    }
+    body[data-page="formules"] .cta-band::after{
+      content:"";
+      position:absolute;
+      inset:-20% 20%;
+      background:radial-gradient(260px 160px at 20% 20%,rgba(255,255,255,.45),transparent 70%);
+      opacity:.35;
+      filter:blur(10px);
+      animation: shineSweep 10s linear infinite;
+      pointer-events:none;
     }
 
     /* petits ajustements typo */
@@ -280,6 +384,43 @@
     @media (max-width:560px){
       body[data-page="formules"] .price__note{ font-size:.88rem; }
       body[data-page="formules"] .plan.card{ padding:20px; }
+    }
+
+    /* animations clés */
+    @keyframes formulesGlow{
+      0%{transform:translate3d(0,0,0) scale(1)}
+      50%{transform:translate3d(0,-12px,0) scale(1.05)}
+      100%{transform:translate3d(0,0,0) scale(1)}
+    }
+    @keyframes planRise{
+      0%{opacity:0;transform:translate3d(0,35px,0) scale(.96)}
+      60%{opacity:1;transform:translate3d(0,-4px,0) scale(1.01)}
+      100%{opacity:1;transform:translate3d(0,0,0) scale(1)}
+    }
+    @keyframes priceGlow{
+      0%{text-shadow:0 0 0 rgba(155,140,255,0)}
+      50%{text-shadow:0 0 16px rgba(155,140,255,.35)}
+      100%{text-shadow:0 0 6px rgba(77,228,193,.4)}
+    }
+    @keyframes checkPulse{
+      0%{box-shadow:0 0 0 0 rgba(77,228,193,.25)}
+      70%{box-shadow:0 0 0 8px rgba(77,228,193,0)}
+      100%{box-shadow:0 0 0 0 rgba(77,228,193,0)}
+    }
+    @keyframes optionFloat{
+      0%{opacity:0;transform:translate3d(0,20px,0) scale(.98)}
+      70%{opacity:1;transform:translate3d(0,-6px,0) scale(1.01)}
+      100%{opacity:1;transform:translate3d(0,0,0) scale(1)}
+    }
+    @keyframes gradientDrift{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+    @keyframes shineSweep{
+      0%{transform:translate3d(-40%,0,0) scale(0.9);opacity:.35}
+      60%{transform:translate3d(60%,0,0) scale(1.1);opacity:.55}
+      100%{transform:translate3d(120%,0,0) scale(1.05);opacity:0}
     }
   </style>
 </body>
